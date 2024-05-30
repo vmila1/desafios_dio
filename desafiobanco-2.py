@@ -32,6 +32,11 @@ class Cliente:
         self.contas = []
     
     def realizar_transacao(self, conta, transacao):
+        # permite 10 transalções diárias    
+        if len(conta.historico.transacoes_do_dia()) >= 10:
+            print("\n@@@ Você excedeu o número de transações permitidas para hoje! @@@")
+            return
+        
         transacao.registrar(conta)
 
     def adicionar_transacao(self, conta):
@@ -106,10 +111,9 @@ class Conta():
 
 
 class ContaCorrente(Conta):
-    def __init__(self, numero, cliente, limite=500, limite_saques=3):
+    def __init__(self, numero, cliente, limite=500):
         super().__init__(numero, cliente)
         self.limite = limite
-        self.limite_saques = limite_saques
 
     def sacar(self, valor):
         numero_saques = len(
@@ -118,13 +122,9 @@ class ContaCorrente(Conta):
         )
 
         excedeu_limite = valor > self.limite
-        excedeu_saques = numero_saques > self.limite_saques
 
         if excedeu_limite:
-            print("\n@@@ A operação falhou! O valor do saque excede o limite. @@@")
-
-        elif excedeu_limite:
-            print("\n@@@ A operação falhou! Número máximo de saques excedido. @@@")
+            print("\n@@@ A operação falhou! O valor do saque excede o limite. (limite - R$ 500) @@@")
 
         else:
             return super().sacar(valor)
@@ -153,6 +153,7 @@ class Historico:
             {
                 "tipo": transacao.__class__.__name__,
                 "valor": transacao.valor,
+                "data": datetime.utcnow().strftime("%d-%m-%Y %H:%M:%S")
             }
         ) 
 
@@ -162,6 +163,16 @@ class Historico:
             if tipo_transacao is None or transacao['tipo'].lower() == tipo_transacao.lower():
                 yield transacao
 
+    def transacoes_do_dia(self):
+        data_dia = datetime.utcnow().date()
+        transacoes = []
+        for transacao in self._transacoes:
+            data_transacao = datetime.strptime(transacao['data'], "%d-%m-%Y %H:%M:%S").date()
+            if data_dia == data_transacao:
+                transacoes.append(transacao)
+        return transacoes
+
+        
 
 class Transacao(ABC):
     @property
@@ -294,7 +305,7 @@ def exibir_extrato(clientes):
     tem_transacao = False
     for transacao in conta.historico.gerar_relatorio():
         tem_transacao = True
-        extrato += f"\n{transacao['tipo']}:\n\tR$ {transacao['valor']:.2f}"
+        extrato += f" \n{transacao['data']}\n{transacao['tipo']}:\n\tR$ {transacao['valor']:.2f}\n"
 
     if not tem_transacao:
         extrato = "Não foram realizadas movimentações"
