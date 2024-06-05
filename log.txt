@@ -1,0 +1,14 @@
+[2024-06-05 14:47:48] Funcao 'criar_cliente' executada com argumentos ([<PessoaFisica: ('1', '1')>],) e {}. Retornou None
+[2024-06-05 14:47:50] Funcao 'criar_conta' executada com argumentos (1, [<PessoaFisica: ('1', '1')>], [<ContaCorrente: ('1')>]) e {}. Retornou None
+[2024-06-05 14:47:58] Funcao 'depositar' executada com argumentos ([<PessoaFisica: ('1', '1')>],) e {}. Retornou None
+[2024-06-05 14:48:05] Funcao 'depositar' executada com argumentos ([<PessoaFisica: ('1', '1')>],) e {}. Retornou None
+[2024-06-05 14:48:08] Funcao 'depositar' executada com argumentos ([<PessoaFisica: ('1', '1')>],) e {}. Retornou None
+[2024-06-05 14:48:12] Funcao 'depositar' executada com argumentos ([<PessoaFisica: ('1', '1')>],) e {}. Retornou None
+[2024-06-05 14:48:14] Funcao 'depositar' executada com argumentos ([<PessoaFisica: ('1', '1')>],) e {}. Retornou None
+[2024-06-05 14:48:17] Funcao 'depositar' executada com argumentos ([<PessoaFisica: ('1', '1')>],) e {}. Retornou None
+[2024-06-05 14:48:19] Funcao 'depositar' executada com argumentos ([<PessoaFisica: ('1', '1')>],) e {}. Retornou None
+[2024-06-05 14:48:21] Funcao 'depositar' executada com argumentos ([<PessoaFisica: ('1', '1')>],) e {}. Retornou None
+[2024-06-05 14:48:24] Funcao 'depositar' executada com argumentos ([<PessoaFisica: ('1', '1')>],) e {}. Retornou None
+[2024-06-05 14:48:27] Funcao 'sacar' executada com argumentos ([<PessoaFisica: ('1', '1')>],) e {}. Retornou None
+[2024-06-05 14:48:29] Funcao 'depositar' executada com argumentos ([<PessoaFisica: ('1', '1')>],) e {}. Retornou None
+[2024-06-05 14:48:32] Funcao 'sacar' executada com argumentos ([<PessoaFisica: ('1', '1')>],) e {}. Retornou None
